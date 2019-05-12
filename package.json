@@ -1,0 +1,50 @@
+{
+  "_from": "react-native-mbaichuan@^1.0.1",
+  "_id": "react-native-mbaichuan@1.0.1",
+  "_inBundle": false,
+  "_integrity": "sha512-qh1fLzdIdRqL02ILyU78HlP/Kcz1PZH49OF15MvWe5nBOXz3oDia1qD+YXx00swmI7FoIcmaRPoe3qwtT2U6lg==",
+  "_location": "/react-native-mbaichuan",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "range",
+    "registry": true,
+    "raw": "react-native-mbaichuan@^1.0.1",
+    "name": "react-native-mbaichuan",
+    "escapedName": "react-native-mbaichuan",
+    "rawSpec": "^1.0.1",
+    "saveSpec": null,
+    "fetchSpec": "^1.0.1"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/react-native-mbaichuan/-/react-native-mbaichuan-1.0.1.tgz",
+  "_shasum": "43b8254156b8ba78629d2d1f2b7a8571e621495a",
+  "_spec": "react-native-mbaichuan@^1.0.1",
+  "_where": "/Users/iori/Documents/Git/RNMMB",
+  "author": {
+    "name": "bashen1",
+    "email": "maochunjie@gmail.com"
+  },
+  "bundleDependencies": false,
+  "deprecated": false,
+  "description": "react-native library for Ali Baichuan",
+  "keywords": [
+    "react-native",
+    "baichuan",
+    "react",
+    "react-component",
+    "ios",
+    "android"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "name": "react-native-mbaichuan",
+  "peerDependencies": {
+    "react-native": ">=0.40"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.1"
+}

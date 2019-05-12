@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:id="@+id/ali_auth_qrview"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    <com.ali.auth.third.ui.webview.AuthWebView
+        android:id="@+id/ali_auth_webview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></com.ali.auth.third.ui.webview.AuthWebView>
+
+</LinearLayout>

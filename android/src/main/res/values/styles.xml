@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="ali_auth_qr_activity_style" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+	<style name="alibc_auth_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:width">268dp</item>
+        <item name="android:height">268dp</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/alibc_transparent</item>
+        <item name="android:windowBackground">@color/alibc_transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+</resources>

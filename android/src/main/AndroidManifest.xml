@@ -1,0 +1,90 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.manmanbuy.mbaichuan">
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <!--<uses-permission android:name="android.permission.WRITE_SETTINGS"/>-->
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.READ_SETTINGS"/>
+    <uses-permission android:name="android.permission.GET_TASKS"/>
+    <!--<uses-permission android:name="android.permission.CHANGE_CONFIGURATION"/>-->
+    <uses-permission android:name="android.permission.RUN_INSTRUMENTATION"/>
+    <application android:label="@string/app_name">
+        <activity
+                android:name="com.ali.auth.third.ui.webview.BaseWebViewActivity"
+                android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity
+                android:name="com.ali.auth.third.ui.LoginWebViewActivity"
+                android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity
+                android:name="com.ali.auth.third.ui.LoginActivity"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"/> <!--  -->
+        <activity
+                android:name="com.ali.auth.third.accountlink.ui.BindResultActivity"
+                android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity
+                android:name="com.ali.auth.third.accountlink.ui.UnbindWebViewActivity"
+                android:theme="@android:style/Theme.Black.NoTitleBar"/>
+        <activity android:name="com.ali.auth.third.ui.QrLoginConfirmActivity"/>
+        <activity
+                android:name="com.ali.auth.third.ui.QrLoginActivity"
+                android:theme="@style/ali_auth_qr_activity_style"/>
+        <activity
+                android:name="com.alibaba.alibclinkpartner.ui.ALPWebviewActivity"
+                android:configChanges="orientation|keyboardHidden|navigation|screenSize"/>
+        <activity
+                android:name="com.alibaba.alibclinkpartner.ui.ALPCallbackActivity"
+                android:configChanges="orientation|keyboardHidden|navigation|screenSize">
+        </activity>
+        <activity
+                android:name="com.alibaba.alibclinkpartner.ui.ALPEntranceActivity"
+                android:configChanges="orientation|keyboardHidden|navigation|screenSize">
+            <intent-filter>
+                <action android:name="com.alibaba.intent.action.GETWAY"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <data
+                        android:host="linkpartner"
+                        android:pathPrefix="/entrance"
+                        android:scheme="tbopen"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.alibaba.baichuan.trade.biz.auth.AlibcAuthActivity"
+                android:exported="false"
+                android:theme="@android:style/Theme.Translucent">
+        </activity>
+        <activity
+                android:name="com.alibaba.baichuan.android.trade.ui.AlibcWebViewActivity">
+            <intent-filter>
+                <action android:name="COM_TAOBAO_TAE_SDK_TRADE_WEB_VIEW_ACTION"/>
+
+                <category android:name="android.intent.category.DEFAULT"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.alibaba.baichuan.android.trade.ui.AlibcBackActivity"
+                android:exported="true"
+                android:launchMode="singleTask">
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW"/>
+                <category android:name="android.intent.category.DEFAULT"/>
+                <category android:name="android.intent.category.BROWSABLE"/>
+                <data android:scheme="alisdk"/>
+            </intent-filter>
+        </activity>
+        <activity
+                android:name="com.alipay.sdk.app.H5PayActivity"
+                android:configChanges="orientation|keyboardHidden|navigation"
+                android:exported="false"/>
+        <activity
+                android:name="com.alipay.sdk.auth.AuthActivity"
+                android:configChanges="orientation|keyboardHidden|navigation"
+                android:exported="false"/>
+    </application>
+</manifest>
+  
