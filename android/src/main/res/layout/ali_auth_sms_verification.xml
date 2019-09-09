@@ -1,0 +1,52 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/ali_auth_mobile_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/ali_auth_space_10" />
+
+        <com.ali.auth.third.ui.iv.AliUserSmsCodeView
+            android:id="@+id/ali_auth_sms_code_view"
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:layout_marginTop="@dimen/ali_auth_space_20"
+            app:scDividerWidth="8dp"
+            app:scTextColor="@color/aliuser_default_text_color"
+            app:scNextUnderLineColor="@color/aliuser_edittext_bg_color_activated"
+            app:scTextCount="6"
+            app:scTextSize="16sp"
+            app:scUnderLineColor="@color/aliuser_color_light_gray"
+            app:scUnderLineStrokeWidth="2dp" />
+
+        <com.ali.auth.third.ui.iv.CountDownButton
+            android:id="@+id/ali_auth_send_smscode_btn"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="40dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="@dimen/ali_auth_space_20"
+            android:background="@drawable/aliuser_bg_send_sms_btn_new"
+            android:enabled="false"
+            android:gravity="center"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            android:text="@string/ali_auth_verification_reGetCode"
+            android:textAllCaps="false"
+            android:textColor="@color/aliuser_send_sms_text_color_new"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+</ScrollView>

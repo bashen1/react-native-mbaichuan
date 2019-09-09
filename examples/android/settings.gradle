@@ -1,0 +1,4 @@
+rootProject.name = 'examples'
+include ':react-native-mbaichuan'
+project(':react-native-mbaichuan').projectDir = new File(rootProject.projectDir, '../../android')
+include ':app'

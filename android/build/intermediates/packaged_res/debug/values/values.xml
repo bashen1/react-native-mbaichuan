@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="alibc_transparent">#00000000</color>
+    <color name="aliuser_color_dark_gray">#959595</color>
+    <color name="aliuser_color_light_gray">#999999</color>
+    <color name="aliuser_default_text_color">#333333</color>
+    <color name="aliuser_edittext_bg_color_activated">#FF5000</color>
+    <color name="aliuser_edittext_bg_color_normal">#FF5000</color>
+    <color name="aliuser_func_text_color">#666666</color>
+    <color name="aliuser_global_background">#f4f4f4</color>
+    <color name="aliuser_send_sms_disable_textcolor">#F3CFB2</color>
+    <color name="aliuser_text_color_hint">#B5B5B5</color>
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="ali_auth_space_10">10dp</dimen>
+    <dimen name="ali_auth_space_160">160dp</dimen>
+    <dimen name="ali_auth_space_20">20dp</dimen>
+    <dimen name="ali_auth_space_300">300dp</dimen>
+    <dimen name="ali_auth_space_48">48dp</dimen>
+    <dimen name="ali_auth_titlebar_height">44dp</dimen>
+    <item name="com_taobao_nb_sdk_webview_click" type="id"/>
+    <item name="webviewload_monitor_cancel_point" type="id"/>
+    <string name="ali_auth_sms_code_success_hint">验证码已发送(%ss)\n</string>
+    <string name="ali_auth_sms_veri_title">请输入 %s 收到的验证码</string>
+    <string name="ali_auth_verification_reGetCode">重新获取验证码</string>
+    <string name="alisdk_message_10008_action">请稍后重试当前操作，若仍然出错，请反馈至论坛，技术支持或 Android SDK 开发咨询群</string>
+    <string name="alisdk_message_10008_message">生成订单地址出错, 错误信息为 {0}</string>
+    <string name="alisdk_message_10008_name">GET_ORDER_URL_EXCEPTION</string>
+    <string name="alisdk_message_10008_type">E</string>
+    <string name="alisdk_message_10009_action">请稍后重试当前操作，若仍然出错，请反馈至论坛，技术支持或 Android SDK 开发咨询群</string>
+    <string name="alisdk_message_10009_message">查询订单出错, 错误信息为 {0}</string>
+    <string name="alisdk_message_10009_name">QUERY_ORDER_RESULT_EXCEPTION</string>
+    <string name="alisdk_message_10009_type">E</string>
+    <string name="alisdk_message_14_message">调用外部API传入参数为null，请加入参数再试</string>
+    <string name="alisdk_message_17_action"/>
+    <string name="alisdk_message_17_message">不能获取类名为 {0}，过滤条件为 {1} 的服务</string>
+    <string name="alisdk_message_17_name">SERVICE_NOT_AVAILABLE_ERROR</string>
+    <string name="alisdk_message_17_type">E</string>
+    <string name="alisdk_message_801_action">请调整参数后重试当前操作</string>
+    <string name="alisdk_message_801_message">商品数量必须为整数并大于 0</string>
+    <string name="alisdk_message_801_name">QUANTITY_FORMAT_ERROR</string>
+    <string name="alisdk_message_801_type">E</string>
+    <string name="alisdk_message_802_action">请修改传入的淘客 pid，如不确认，请联系淘客相关人员</string>
+    <string name="alisdk_message_802_message">当前传入的淘客 pid {0} 非法，正确格式应以 mm_ 为前缀</string>
+    <string name="alisdk_message_802_name">INVALID_TAOKE_PID_ERROR</string>
+    <string name="alisdk_message_802_type">E</string>
+    <string name="alisdk_message_803_action">请在初始化之前调用 TradeConfigs.defaultTaokePid="mm_****" 设置默认的淘客 pid 值, 此值会在相关方法调用时未指定 pid 时使用</string>
+    <string name="alisdk_message_803_message">未设置默认的淘客 pid</string>
+    <string name="alisdk_message_803_name">INVALID_DEFAULT_TAOKE_PID</string>
+    <string name="alisdk_message_803_type">W</string>
+    <string name="alisdk_message_804_action">请准备订单号和支付宝错误码至旺旺支付宝移动支持群(旺旺号:移动收单daily)咨询</string>
+    <string name="alisdk_message_804_message">使用支付宝支付失败，支付宝错误码为 8000, 含义为正在处理中</string>
+    <string name="alisdk_message_804_name">PAY_IN_PROGRESS</string>
+    <string name="alisdk_message_804_type">E</string>
+    <string name="alisdk_message_805_action">请准备订单号和支付宝错误码至旺旺支付宝移动支持群(旺旺号:移动收单daily)咨询</string>
+    <string name="alisdk_message_805_message">使用支付宝支付失败，支付宝错误码为 4000, 含义为订单支付失败</string>
+    <string name="alisdk_message_805_name">PAY_ORDER_FAILED</string>
+    <string name="alisdk_message_805_type">E</string>
+    <string name="alisdk_message_806_action">请准备订单号和支付宝错误码至旺旺支付宝移动支持群(旺旺号:移动收单daily)咨询</string>
+    <string name="alisdk_message_806_message">使用支付宝支付失败，支付宝错误码为 6001, 含义为用户中途取消</string>
+    <string name="alisdk_message_806_name">PAY_USER_CANCEL</string>
+    <string name="alisdk_message_806_type">E</string>
+    <string name="alisdk_message_807_action">请准备订单号和支付宝错误码至旺旺支付宝移动支持群(旺旺号:移动收单daily)咨询</string>
+    <string name="alisdk_message_807_message">使用支付宝支付失败，支付宝错误码为 6002, 含义为网络连接出错</string>
+    <string name="alisdk_message_807_name">PAY_NETWORK_FAILED</string>
+    <string name="alisdk_message_807_type">E</string>
+    <string name="alisdk_message_808_action">请准备订单号和支付宝错误码至旺旺支付宝移动支持群(旺旺号:移动收单daily)咨询</string>
+    <string name="alisdk_message_808_message">使用支付宝支付失败，支付宝错误码为 {0}</string>
+    <string name="alisdk_message_808_name">PAY_COMMON_ERROR</string>
+    <string name="alisdk_message_808_type">E</string>
+    <string name="alisdk_message_809_message">使用Apliay SDK调用方法失败，请下载最新的ApliaySDK lib包或者使用H5方式付款</string>
+    <string name="aliuser_cancel">取消</string>
+    <string name="aliuser_common_ok">确定</string>
+    <string name="aliuser_network_error">亲，您的手机网络不太顺畅喔~</string>
+    <string name="aliuser_param_invalid">参数不合法</string>
+    <string name="aliuser_ssl_error_info">证书错误. 是否继续访问?</string>
+    <string name="aliuser_ssl_error_title">SSL证书错误</string>
+    <string name="aliusersdk_api_unauthorized">API未授权</string>
+    <string name="aliusersdk_network_error">亲，您的手机网络不太顺畅喔~</string>
+    <string name="aliusersdk_session_error">亲，你的操作已超时，请重试</string>
+    <string name="app_name">mAliBaiChuan</string>
+    <string name="auth_sdk_message_10003_action"/>
+    <string name="auth_sdk_message_10003_message">用户取消登录或登录失败</string>
+    <string name="auth_sdk_message_10003_name">USER_CANCEL</string>
+    <string name="auth_sdk_message_10003_type">I</string>
+    <string name="auth_sdk_message_10004_action"/>
+    <string name="auth_sdk_message_10004_message">用户取消登录</string>
+    <string name="auth_sdk_message_10004_name">TAOBAO_CANCEL</string>
+    <string name="auth_sdk_message_10004_type">I</string>
+    <string name="auth_sdk_message_10005_action"/>
+    <string name="auth_sdk_message_10005_message">唤起手淘登录失败</string>
+    <string name="auth_sdk_message_10005_name">TAOBAO_ERROR</string>
+    <string name="auth_sdk_message_10005_type">I</string>
+    <string name="auth_sdk_message_10010_action"/>
+    <string name="auth_sdk_message_10010_message">系统异常</string>
+    <string name="auth_sdk_message_10010_name">SYSTEM_ERROR</string>
+    <string name="auth_sdk_message_10010_type">I</string>
+    <string name="auth_sdk_message_10015_action"/>
+    <string name="auth_sdk_message_10015_message">退出登录</string>
+    <string name="auth_sdk_message_10015_name">USER_LOGOUT</string>
+    <string name="auth_sdk_message_10015_type">I</string>
+    <string name="auth_sdk_message_10101_action"/>
+    <string name="auth_sdk_message_10101_message">H5登录失败</string>
+    <string name="auth_sdk_message_10101_name">H5_ERROR</string>
+    <string name="auth_sdk_message_10101_type">I</string>
+    <string name="auth_sdk_message_15_action">请使用默认的 androiddebugkey 对当前开发应用签名或在应用初始化之前调用 MemberSDK.turnOnDebug(), 运行程序查看 logcat 输出以获取更多错误细节，并采取对应操作</string>
+    <string name="auth_sdk_message_15_message">接口异常，错误消息为： {0}, 请使用 LogCat 查看更多细节</string>
+    <string name="auth_sdk_message_15_name">SERVER_REQUEST_ERROR</string>
+    <string name="auth_sdk_message_15_type">I</string>
+    <string name="auth_sdk_message_qr_expired">二维码已过期</string>
+    <string name="auth_sdk_message_qr_expired_sub">请刷新二维码重试</string>
+    <string name="auth_sdk_message_qr_login_success">登录成功</string>
+    <string name="auth_sdk_message_qr_refresh">刷新二维码</string>
+    <string name="auth_sdk_message_qr_scaned">扫描成功!</string>
+    <string name="auth_sdk_message_qr_scaned_sub">请在手机端确认</string>
+    <string name="com_alibc_auth_actiivty_auth_ok">确认授权</string>
+    <string name="com_alibc_auth_actiivty_cancel">取消</string>
+    <string name="com_alibc_auth_actiivty_get">获取</string>
+    <string name="com_taobao_nb_sdk_loading_progress_message">加载中</string>
+    <string name="com_taobao_tae_sdk_alert_message">您离开太久了，请重新操作</string>
+    <string name="com_taobao_tae_sdk_authorize_title">登录授权</string>
+    <string name="com_taobao_tae_sdk_bind_title">登录并绑定</string>
+    <string name="com_taobao_tae_sdk_confirm">确定</string>
+    <string name="com_taobao_tae_sdk_confirm_cancel">取消</string>
+    <string name="com_taobao_tae_sdk_loading_progress_message">加载中</string>
+    <string name="com_taobao_tae_sdk_logout_fail_message">登出失败</string>
+    <string name="com_taobao_tae_sdk_network_not_available_message">网络无法连接</string>
+    <string name="com_taobao_tae_sdk_ssl_error_info">证书错误. 是否继续访问?</string>
+    <string name="com_taobao_tae_sdk_ssl_error_title">SSL证书错误</string>
+    <string name="com_taobao_tae_sdk_system_exception">系统异常</string>
+    <string name="init_success">初始化完成</string>
+    <style name="AppBaseTheme" parent="android:Theme.Light">
+        <!--
+            Theme customizations available in newer API levels can go in
+            res/values-vXX/styles.xml, while customizations related to
+            backward-compatibility can go here.
+        -->
+    </style>
+    <style name="AppTheme" parent="AppBaseTheme">
+        <!-- All customizations that are NOT specific to a particular API-level can go here. -->
+    </style>
+    <style name="ali_auth_qr_activity_style" parent="android:Theme.Dialog">
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:backgroundDimEnabled">false</item>
+    </style>
+    <style name="alibc_auth_dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:width">268dp</item>
+        <item name="android:height">268dp</item>
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowIsTranslucent">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:background">@color/alibc_transparent</item>
+        <item name="android:windowBackground">@color/alibc_transparent</item>
+        <item name="android:backgroundDimEnabled">true</item>
+    </style>
+    <declare-styleable name="AliUserSmsCodeView"><attr format="color|reference" name="scTextColor"/><attr format="integer" name="scTextCount"/><attr format="dimension|reference" name="scTextSize"/><attr format="dimension|reference" name="scDividerWidth"/><attr format="string|reference" name="scTextFont"/><attr format="color|reference" name="scUnderLineColor"/><attr format="color|reference" name="scNextUnderLineColor"/><attr format="dimension|reference" name="scUnderLineStrokeWidth"/></declare-styleable>
+</resources>

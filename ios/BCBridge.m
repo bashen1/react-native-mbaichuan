@@ -45,9 +45,6 @@
     
     //设置全局的app标识，在电商模块里等同于isv_code
     [[AlibcTradeSDK sharedInstance] setISVCode:@"app"];
-    
-    // 设置全局配置，是否强制使用h5
-    [[AlibcTradeSDK sharedInstance] setIsForceH5:NO];
 }
 
 - (void)showLogin: (RCTPromiseResolveBlock)resolve
@@ -135,24 +132,29 @@
     id<AlibcTradePage> page;
     if ([type isEqualToString:@"detail"]) {
         page = [AlibcTradePageFactory itemDetailPage:(NSString *)payload[@"itemid"]];
+        [self _show:page param:param bizCode:@"detail" resolve:resolve];
     } else if ([type isEqualToString:@"url"]) {
-        page = [AlibcTradePageFactory page:(NSString *)payload[@"url"]];
+        NSString* url = payload[@"url"];
+        [self _showUrl:url param:param resolve:resolve];
     } else if ([type isEqualToString:@"shop"]) {
         page = [AlibcTradePageFactory shopPage:(NSString *)payload[@"shopid"]];
+        [self _show:page param:param bizCode:@"shop" resolve:resolve];
     } else if ([type isEqualToString:@"orders"]) {
         page = [AlibcTradePageFactory myOrdersPage:[payload[@"orderStatus"] integerValue] isAllOrder:[payload[@"allOrder"] boolValue]];
+        [self _show:page param:param bizCode:@"orders" resolve:resolve];
     } else if ([type isEqualToString:@"addCard"]) {
         page = [AlibcTradePageFactory addCartPage:(NSString *)payload[@"itemid"]];
+        [self _show:page param:param bizCode:@"addCart" resolve:resolve];
     } else if ([type isEqualToString:@"mycard"]) {
         page = [AlibcTradePageFactory myCartsPage];
+        [self _show:page param:param bizCode:@"cart" resolve:resolve];
     } else {
         RCTLog(@"not implement");
         return;
     }
-    [self _show:page param:param resolve:resolve];
 }
 
-- (void)_show: (id<AlibcTradePage>)page param:(NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve
+- (void)_show: (id<AlibcTradePage>)page param:(NSDictionary *)param bizCode: (NSString *)bizCode resolve: (RCTPromiseResolveBlock)resolve
 {
     //处理参数
     NSDictionary* result = [self dealParam:param];
@@ -162,25 +164,44 @@
     showParams = result[@"showParams"];
     NSDictionary *trackParam = result[@"trackParam"];
     
-    id<AlibcTradeService> service = [AlibcTradeSDK sharedInstance].tradeService;
-    [service
-     show:[UIApplication sharedApplication].delegate.window.rootViewController
-     page:page
-     showParams:showParams
-     taoKeParams:taokeParams
-     trackParam:trackParam
-     tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
-         //成功回调
-         NSArray *orderId=@[];
-         if(result.result == AlibcTradeResultTypePaySuccess){
-             orderId=result.payResult.paySuccessOrders;
-         }
-         NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
-         resolve(ret);
-     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
-         NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
-         resolve(ret);
-     }];
+    [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:bizCode page:page webView:nil parentController:[UIApplication sharedApplication].delegate.window.rootViewController showParams:showParams taoKeParams:taokeParams trackParam:trackParam tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        //成功回调
+        NSArray *orderId=@[];
+        if(result.result == AlibcTradeResultTypePaySuccess){
+            orderId=result.payResult.paySuccessOrders;
+        }
+        NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
+        resolve(ret);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+        //失败回调
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        resolve(ret);
+    }];
+}
+
+- (void)_showUrl: (NSString *)url param:(NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve
+{
+    //处理参数
+    NSDictionary* result = [self dealParam:param];
+    AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
+    taokeParams = result[@"taokeParams"];
+    AlibcTradeShowParams* showParams = [[AlibcTradeShowParams alloc] init];
+    showParams = result[@"showParams"];
+    NSDictionary *trackParam = result[@"trackParam"];
+    
+    [[AlibcTradeSDK sharedInstance].tradeService openByUrl:url identity:@"trade" webView:nil parentController:[UIApplication sharedApplication].delegate.window.rootViewController showParams:showParams taoKeParams:taokeParams trackParam:trackParam tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        //成功回调
+        NSArray *orderId=@[];
+        if(result.result == AlibcTradeResultTypePaySuccess){
+            orderId=result.payResult.paySuccessOrders;
+        }
+        NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
+        resolve(ret);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+        //失败回调
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        resolve(ret);
+    }];
 }
 
 - (void)showInWebView: (BCWebView *)webView param:(NSDictionary *)param
@@ -191,24 +212,29 @@
     id<AlibcTradePage> page;
     if ([type isEqualToString:@"detail"]) {
         page = [AlibcTradePageFactory itemDetailPage:(NSString *)payload[@"itemid"]];
+        [self _showInWebView:webView page:page param:param bizCode:@"detail"];
     } else if ([type isEqualToString:@"url"]) {
-        page = [AlibcTradePageFactory page:(NSString *)payload[@"url"]];
+        NSString* url = payload[@"url"];
+        [self _showUrlInWebView:webView url:url param:param];
     } else if ([type isEqualToString:@"shop"]) {
         page = [AlibcTradePageFactory shopPage:(NSString *)payload[@"shopid"]];
+        [self _showInWebView:webView page:page param:param bizCode:@"shop"];
     } else if ([type isEqualToString:@"orders"]) {
         page = [AlibcTradePageFactory myOrdersPage:[payload[@"orderStatus"] integerValue] isAllOrder:[payload[@"allOrder"] boolValue]];
+        [self _showInWebView:webView page:page param:param bizCode:@"orders"];
     } else if ([type isEqualToString:@"addCard"]) {
         page = [AlibcTradePageFactory addCartPage:(NSString *)payload[@"itemid"]];
+        [self _showInWebView:webView page:page param:param bizCode:@"addCart"];
     } else if ([type isEqualToString:@"mycard"]) {
         page = [AlibcTradePageFactory myCartsPage];
+        [self _showInWebView:webView page:page param:param bizCode:@"cart"];
     } else {
         RCTLog(@"not implement");
         return;
     }
-    [self _showInWebView:webView page:page param:param];
 }
 
-- (void)_showInWebView: (UIWebView *)webView page:(id<AlibcTradePage>)page param:(NSDictionary *)param
+- (void)_showInWebView: (UIWebView *)webView page:(id<AlibcTradePage>)page param:(NSDictionary *)param bizCode: (NSString *)bizCode
 {
     //处理参数
     NSDictionary* result = [self dealParam:param];
@@ -218,26 +244,44 @@
     showParams = result[@"showParams"];
     NSDictionary *trackParam = result[@"trackParam"];
     
-    id<AlibcTradeService> service = [AlibcTradeSDK sharedInstance].tradeService;
-    [service
-     show:[UIApplication sharedApplication].delegate.window.rootViewController
-     webView:webView
-     page:page
-     showParams:showParams
-     taoKeParams:taokeParams
-     trackParam:trackParam
-     tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
-         //成功回调
-         NSArray *orderId=@[];
-         if(result.result == AlibcTradeResultTypePaySuccess){
-             orderId=result.payResult.paySuccessOrders;
-         }
-         NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
-         ((BCWebView *)webView).onTradeResult(ret);
-     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
-         NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
-         ((BCWebView *)webView).onTradeResult(ret);
-     }];
+    [[AlibcTradeSDK sharedInstance].tradeService openByBizCode:bizCode page:page webView: webView parentController:[UIApplication sharedApplication].delegate.window.rootViewController showParams:showParams taoKeParams:taokeParams trackParam:trackParam tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        //成功回调
+        NSArray *orderId=@[];
+        if(result.result == AlibcTradeResultTypePaySuccess){
+            orderId=result.payResult.paySuccessOrders;
+        }
+        NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
+        ((BCWebView *)webView).onTradeResult(ret);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+        //失败回调
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        ((BCWebView *)webView).onTradeResult(ret);
+    }];
+}
+
+- (void)_showUrlInWebView: (UIWebView *)webView url:(NSString *)url param:(NSDictionary *)param
+{
+    //处理参数
+    NSDictionary* result = [self dealParam:param];
+    AlibcTradeTaokeParams *taokeParams = [[AlibcTradeTaokeParams alloc] init];
+    taokeParams = result[@"taokeParams"];
+    AlibcTradeShowParams* showParams = [[AlibcTradeShowParams alloc] init];
+    showParams = result[@"showParams"];
+    NSDictionary *trackParam = result[@"trackParam"];
+    
+    [[AlibcTradeSDK sharedInstance].tradeService openByUrl:url identity:@"trade" webView:webView parentController:[UIApplication sharedApplication].delegate.window.rootViewController showParams:showParams taoKeParams:taokeParams trackParam:trackParam tradeProcessSuccessCallback:^(AlibcTradeResult * _Nullable result) {
+        //成功回调
+        NSArray *orderId=@[];
+        if(result.result == AlibcTradeResultTypePaySuccess){
+            orderId=result.payResult.paySuccessOrders;
+        }
+        NSDictionary *ret = @{@"code" : @"0",@"message":@"success",@"orderid":orderId};
+        ((BCWebView *)webView).onTradeResult(ret);
+    } tradeProcessFailedCallback:^(NSError * _Nullable error) {
+        //失败回调
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        ((BCWebView *)webView).onTradeResult(ret);
+    }];
 }
 
 /****---------------以下是公用方法----------------**/
@@ -267,19 +311,20 @@
     //[taokeParam setPid:mmPid];
     //[taokeParam setAdzoneId:adzoneid];
     taokeParam.pid = mmPid;
-    taokeParam.adzoneId = adzoneid;
-    taokeParam.extParams=@{@"taokeAppkey":tkkey};
+    //taokeParam.adzoneId = adzoneid;
+    //taokeParam.extParams=@{@"taokeAppkey":tkkey};
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
     if ((NSString *)payload[@"opentype"]!=nil) {
         if([(NSString *)payload[@"opentype"] isEqual:@"html5"]){
-            showParam.openType = AlibcOpenTypeH5;
+            showParam.openType = AlibcOpenTypeAuto;
         }else{
             showParam.openType = AlibcOpenTypeNative;
         }
     }else{
         showParam.openType = AlibcOpenTypeAuto;
     }
+    showParam.nativeFailMode = AlibcNativeFailModeJumpH5;
     //新版加入，防止唤醒手淘app的时候打开h5
     showParam.linkKey=@"taobao";
     

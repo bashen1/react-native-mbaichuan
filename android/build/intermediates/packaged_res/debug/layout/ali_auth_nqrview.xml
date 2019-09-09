@@ -1,0 +1,151 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ali_auth_nqrview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:id="@+id/ali_auth_nqrview_lay_errortips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#fbfbfb"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ali_auth_nqrview_lay_error_pic"
+                android:layout_width="@android:dimen/notification_large_icon_height"
+                android:layout_height="@android:dimen/notification_large_icon_height"
+                android:paddingTop="@dimen/ali_auth_space_20"
+                android:src="@android:drawable/ic_delete" />
+
+            <TextView
+                android:id="@+id/ali_auth_nqrview_error_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="@string/auth_sdk_message_qr_expired"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ali_auth_nqrview_error_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ali_auth_space_10"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="@string/auth_sdk_message_qr_expired_sub"
+                android:textSize="14sp" />
+
+            <Button
+                android:id="@+id/ali_auth_nqrview_error_refresh"
+                android:layout_width="@dimen/ali_auth_space_160"
+                android:layout_height="36dp"
+                android:layout_marginTop="@dimen/ali_auth_space_10"
+                android:background="@drawable/aliuser_btn_lucency"
+                android:text="@string/auth_sdk_message_qr_refresh" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ali_auth_nqrview_lay_scanedtips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#fbfbfb"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ali_auth_nqrview_lay_scaned_pic"
+                android:layout_width="@dimen/ali_auth_titlebar_height"
+                android:layout_height="@dimen/ali_auth_titlebar_height"
+                android:layout_marginTop="@dimen/ali_auth_space_20"
+                android:cropToPadding="false"
+                android:src="@android:drawable/presence_online" />
+
+            <TextView
+                android:id="@+id/ali_auth_nqrview_scaned_main"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ali_auth_space_10"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="@string/auth_sdk_message_qr_scaned"
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/ali_auth_nqrview_scaned_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/ali_auth_space_10"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="@string/auth_sdk_message_qr_scaned_sub"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ali_auth_nqrview_lay_successedtips"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:background="#fbfbfb"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="@dimen/ali_auth_titlebar_height"
+                android:layout_height="@dimen/ali_auth_titlebar_height"
+                android:layout_marginTop="@dimen/ali_auth_space_20"
+                android:cropToPadding="false"
+                android:src="@android:drawable/presence_online" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/ali_auth_space_10"
+                android:ems="10"
+                android:gravity="center"
+                android:inputType="textPersonName"
+                android:text="@string/auth_sdk_message_qr_login_success"
+                android:textSize="18sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ali_auth_nqrview_lay_qr"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top|center"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <ImageView
+                android:id="@+id/ali_auth_nqrview_qr_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@android:color/darker_gray" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ali_auth_verify_rl"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:visibility="gone" />
+</FrameLayout>

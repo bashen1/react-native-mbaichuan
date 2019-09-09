@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:color="@color/aliuser_text_color_hint" android:state_enabled="false"/>
+    <item android:color="@color/aliuser_edittext_bg_color_activated"/>
+</selector>
