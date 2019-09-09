@@ -1,6 +1,10 @@
 
 # react-native-mbaichuan
 
+## 升级到SDK为4.X
+
+## NPM 安装完以后，必须下载本仓库中的百川SDK（iOS），由于百川SDK中用了SystemLink，NPM中的百川SDK包不完整，Android不受影响
+
 ## 开始
 
 `$ npm install react-native-mbaichuan --save`
@@ -31,6 +35,12 @@
 3. 打开 `android/app/build.gradle` ，添加:
   	```
       compile project(':react-native-mbaichuan')
+  	```
+  	以及添加
+  	```
+  	ndk {
+        abiFilters "armeabi-v7a", "x86"
+    }
   	```
 
 

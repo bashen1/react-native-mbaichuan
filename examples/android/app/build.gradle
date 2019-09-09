@@ -110,9 +110,6 @@ android {
         ndk {
             abiFilters "armeabi-v7a", "x86"
         }
-        manifestPlaceholders = [
-                KeplerScheme: "sdkback7598dc20acbb43d280f16cbf593be587" //开普勒SDK中AndroidManifest.xml 中的值
-        ]
     }
     signingConfigs {
         debug {
