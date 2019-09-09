@@ -51,6 +51,7 @@
 1. 把 `/node_modules/react-native-mbaichuan/ios` 下的 `BaichuanSDK` 引入到项目中，并替换 `yw_1222.jpg`
 2. `URL Schemes` 添加 `tbopen + 百川APPID` 
 3. `LSApplicationQueriesSchemes` 添加 `tmall`、`tbopen`
+4. **记得把examples/ios/BaichuanSDK/mtopsdk_configuration.plist 文件拖到项目中去，否则initSDK失败闪退**
 
 #### Android
 
