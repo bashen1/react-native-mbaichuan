@@ -19,7 +19,7 @@ class App extends Component {
         let param = {
             mmpid: 'mm_23448739_15832573_60538822',
             isvcode: 'app',
-            opentype: 'html5',
+            opentype: 'native',
             adzoneid: '60538822',
             tkkey: '23482513'
         };
@@ -68,7 +68,7 @@ class App extends Component {
                                 alert(JSON.stringify(await mBaichuan.show({
                                     type: 'detail',
                                     payload: Object.assign({}, param, {
-                                        itemid: '579980429376'
+                                        itemid: '600098537943'
                                     })
                                 })));
                             }}
@@ -79,7 +79,19 @@ class App extends Component {
                                 alert(JSON.stringify(await mBaichuan.show({
                                     type: 'url',
                                     payload: Object.assign({}, param, {
-                                        url: 'https://detail.tmall.com/item.htm?id=579980429376'
+                                        url: 'https://detail.tmall.com/item.htm?id=600098537943'
+                                    })
+                                })));
+                            }}
+                        />
+                        <ListItem
+                            title={'url授权'}
+                            action={async () => {
+                                alert(JSON.stringify(await mBaichuan.show({
+                                    type: 'url',
+                                    payload: Object.assign({}, param, {
+                                        url: 'https://oauth.taobao.com/authorize?response_type=code&client_id=25334456&redirect_uri=&view=wap',
+                                        opentype:'html5'
                                     })
                                 })));
                             }}
@@ -88,7 +100,7 @@ class App extends Component {
                             title={'shop'}
                             action={async () => {
                                 alert(JSON.stringify(await mBaichuan.show({
-                                    type: 'url',
+                                    type: 'shop',
                                     payload: Object.assign({}, param, {
                                         shopid: '471927947'
                                     })
@@ -96,7 +108,7 @@ class App extends Component {
                             }}
                         />
                         <ListItem
-                            title={'addCard'}
+                            title={'addCard【废除】'}
                             action={async () => {
                                 alert(JSON.stringify(await mBaichuan.show({
                                     type: 'addCard',
@@ -107,10 +119,10 @@ class App extends Component {
                             }}
                         />
                         <ListItem
-                            title={'orders'}
+                            title={'orders【废除】'}
                             action={async () => {
                                 alert(JSON.stringify(await mBaichuan.show({
-                                    type: 'url',
+                                    type: 'orders',
                                     payload: Object.assign({}, param, {
                                         orderStatus: '0',
                                         allOrder: 'YES'
@@ -127,48 +139,6 @@ class App extends Component {
                                 })));
                             }}
                         />
-                    </View>
-                    <View style={[{marginTop: 30}]}>
-                        <Text style={[CommonCss.lineBeforeNote]}>WebView接口</Text>
-                       {/* <mBaichuan.BCWebView
-                            style={{
-                                width: '100%',
-                                height: 300
-                            }}
-                            ref="BCWeb"
-                            param={{
-                                type: 'url',
-                                payload: Object.assign({}, param, {
-                                    url: 'https://detail.tmall.com/item.htm?id=579980429376'
-                                })
-                            }}
-                            onTradeResult={(tradeResult) => {
-                                alert(JSON.stringify(tradeResult));
-                            }}
-                            onStateChange={(state) => {
-                                alert(JSON.stringify(state));
-                            }}
-                        />*/}
-                        <View style={[{marginTop: 30}]}>
-                            <ListItem
-                                title={'goBack'}
-                                action={() => {
-                                    this.refs['BCWeb'].goBack();
-                                }}
-                            />
-                            <ListItem
-                                title={'goForward'}
-                                action={async () => {
-                                    this.refs['BCWeb'].goForward();
-                                }}
-                            />
-                            <ListItem
-                                title={'reload'}
-                                action={async () => {
-                                    this.refs['BCWeb'].reload();
-                                }}
-                            />
-                        </View>
                     </View>
                 </ScrollView>
             </SafeAreaView>

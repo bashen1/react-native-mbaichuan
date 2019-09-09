@@ -4,6 +4,7 @@ package com.maochunjie.mbaichuan;
 import android.app.Activity;
 import android.content.Intent;
 import android.util.Log;
+import android.webkit.WebChromeClient;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
@@ -302,13 +303,13 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
         });
     }
 
-    private void _show(AlibcBasePage page,String bizCode, final ReadableMap param, final Promise p) {
+    private void _show(AlibcBasePage page, String bizCode, final ReadableMap param, final Promise p) {
         // 处理参数
         AlibcShowParams showParams = this.dealShowParams(param);
         AlibcTaokeParams taokeParams = this.dealTaokeParams(param);
         Map<String, String> trackParams = this.dealTrackParams(param);
 
-        AlibcTrade.openByBizCode(getCurrentActivity(), page, null, null, null, bizCode, showParams, taokeParams, trackParams, new AlibcTradeCallback() {
+        AlibcTrade.openByBizCode(getCurrentActivity(), page, null, new WebViewClient(), new WebChromeClient(), bizCode, showParams, taokeParams, trackParams, new AlibcTradeCallback() {
             @Override
             public void onTradeSuccess(AlibcTradeResult alibcTradeResult) {
                 Log.v("ReactNative", TAG + ":onTradeSuccess");
@@ -335,7 +336,7 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
         AlibcShowParams showParams = this.dealShowParams(param);
         AlibcTaokeParams taokeParams = this.dealTaokeParams(param);
         Map<String, String> trackParams = this.dealTrackParams(param);
-        AlibcTrade.openByUrl(getCurrentActivity(), "", url, null, null, null, showParams, taokeParams, trackParams, new AlibcTradeCallback() {
+        AlibcTrade.openByUrl(getCurrentActivity(), "trade", url, null, new WebViewClient(), new WebChromeClient(), showParams, taokeParams, trackParams, new AlibcTradeCallback() {
             @Override
             public void onTradeSuccess(AlibcTradeResult alibcTradeResult) {
                 Log.v("ReactNative", TAG + ":onTradeSuccess");
@@ -379,7 +380,7 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
         }
 
         showParams.setClientType("taobao");
-        showParams.setBackUrl("");
+        showParams.setBackUrl("alisdk://");
         showParams.setNativeOpenFailedMode(AlibcFailModeType.AlibcNativeFailModeJumpH5);
 
         return showParams;
