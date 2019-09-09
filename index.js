@@ -87,8 +87,21 @@ const NativeComponent = requireNativeComponent("BCWeb", BCWebView);
 
 const {RNReactNativeMbaichuan} = NativeModules;
 
-export async function initSDK() {
-    return await RNReactNativeMbaichuan.initSDK();
+export async function initSDK(param) {
+    let isvVersion = '4.0.0';
+    let isvAppName = 'mbaichuan';
+    if (param) {
+        if (param.isvVersion && param.isvVersion !== '') {
+            isvVersion = param.isvVersion;
+        }
+        if (param.isvVersion && param.isvAppName !== '') {
+            isvAppName = param.isvAppName;
+        }
+    }
+    return await RNReactNativeMbaichuan.initSDK({
+        isvVersion,
+        isvAppName
+    });
 }
 
 export async function showLogin() {

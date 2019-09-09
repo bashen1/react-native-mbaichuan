@@ -18,7 +18,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface BCBridge : NSObject
 + (instancetype)sharedInstance;
-- (void)initSDK: (RCTPromiseResolveBlock)resolve;
+- (void)initSDK: (NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve;
 - (void)showLogin: (RCTPromiseResolveBlock)resolve;
 - (void)getUserInfo: (RCTPromiseResolveBlock)resolve;
 - (void)logout: (RCTPromiseResolveBlock)resolve;

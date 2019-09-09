@@ -52,9 +52,9 @@ RCT_EXPORT_MODULE()
     
 }
 
-RCT_EXPORT_METHOD(initSDK: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
+RCT_EXPORT_METHOD(initSDK:(NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)
 {
-    [[BCBridge sharedInstance] initSDK:resolve];
+    [[BCBridge sharedInstance] initSDK:param resolve:resolve];
 }
 
 RCT_EXPORT_METHOD(showLogin: (RCTPromiseResolveBlock)resolve rejecter:(RCTPromiseRejectBlock)reject)

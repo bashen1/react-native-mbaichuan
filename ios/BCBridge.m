@@ -9,8 +9,9 @@
 #import "BCBridge.h"
 #import "BCWebView.h"
 #import <AlibabaAuthSDK/ALBBSDK.h>
-#import <AlibcTradeBiz/AlibcTradeBiz.h>
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
+#import <AlibcTradeSDK/AlibcTradeService.h>
+#import <AlibcTradeSDK/AlibcTradePageFactory.h>
 #import <React/RCTLog.h>
 
 @implementation BCBridge {
@@ -25,8 +26,17 @@
     }
     return instance;
 }
-- (void)initSDK: (RCTPromiseResolveBlock)resolve
+- (void)initSDK: (NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve
 {
+    NSString* isvVersion = @"4.0.0";
+    NSString* isvAppName = @"mbaichuan";
+    if (param[@"isvVersion"]!=nil) {
+        isvVersion = param[@"isvVersion"];
+    }
+    if (param[@"isvAppName"]!=nil) {
+        isvAppName =param[@"isvAppName"];
+    }
+    
     // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
     [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
         NSDictionary *ret = @{@"code": @"0", @"message":@"success"};
@@ -45,6 +55,9 @@
     
     //设置全局的app标识，在电商模块里等同于isv_code
     [[AlibcTradeSDK sharedInstance] setISVCode:@"app"];
+    //不设置的话，加入adzoneid会导致奔溃
+    [[AlibcTradeSDK sharedInstance] setIsvVersion:isvVersion];
+    [[AlibcTradeSDK sharedInstance] setIsvAppName:isvAppName];
 }
 
 - (void)showLogin: (RCTPromiseResolveBlock)resolve
@@ -308,11 +321,9 @@
         tkkey=(NSString *)payload[@"tkkey"];
     }
     
-    //[taokeParam setPid:mmPid];
-    //[taokeParam setAdzoneId:adzoneid];
     taokeParam.pid = mmPid;
-    //taokeParam.adzoneId = adzoneid;
-    //taokeParam.extParams=@{@"taokeAppkey":tkkey};
+    taokeParam.adzoneId = adzoneid;
+    taokeParam.extParams=@{@"taokeAppkey":tkkey};
     
     AlibcTradeShowParams* showParam = [[AlibcTradeShowParams alloc] init];
     if ((NSString *)payload[@"opentype"]!=nil) {
