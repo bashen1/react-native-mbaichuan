@@ -3,6 +3,7 @@ import React, {
 } from 'react';
 import {
     View,
+    Platform,
     UIManager,
     NativeModules,
     requireNativeComponent,
@@ -98,10 +99,14 @@ export async function initSDK(param) {
             isvAppName = param.isvAppName;
         }
     }
-    return await RNReactNativeMbaichuan.initSDK({
-        isvVersion,
-        isvAppName
-    });
+    if (Platform.OS === 'ios') {
+        return await RNReactNativeMbaichuan.initSDK({
+            isvVersion,
+            isvAppName
+        });
+    } else {
+        return await RNReactNativeMbaichuan.initSDK();
+    }
 }
 
 export async function showLogin() {
