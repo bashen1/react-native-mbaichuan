@@ -19,7 +19,8 @@ RCT_EXPORT_MODULE()
 - (UIView *)view
 {
     BCWebView *webView = [[BCWebView alloc] initWithFrame:CGRectZero];
-    webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    //webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
+    webView.scalesPageToFit = YES;
     webView.scrollView.scrollEnabled = YES;
     webView.delegate = self;
     return webView;
