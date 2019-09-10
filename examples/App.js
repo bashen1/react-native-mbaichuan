@@ -91,7 +91,7 @@ class App extends Component {
                                     type: 'url',
                                     payload: Object.assign({}, param, {
                                         url: 'https://oauth.taobao.com/authorize?response_type=code&client_id=25334456&redirect_uri=&view=wap',
-                                        opentype:'html5'
+                                        opentype: 'html5'
                                     })
                                 })));
                             }}
@@ -139,6 +139,59 @@ class App extends Component {
                                 })));
                             }}
                         />
+                    </View>
+
+                    <View style={[{marginTop: 30}]}>
+
+                        <ListItem
+                            title={this.state.showWeb ? '关闭Webview' : '显示Webview'}
+                            action={async () => {
+                                this.setState({
+                                    showWeb: !this.state.showWeb
+                                })
+                            }}
+                        />
+                        {this.state.showWeb ? (
+                            <React.Fragment>
+                                <mBaichuan.BCWebView
+                                    style={{
+                                        flex: 1,
+                                        height: 300
+                                    }}
+                                    ref="BCWeb"
+                                    param={{
+                                        type: 'url',
+                                        payload: Object.assign({}, param, {
+                                            url: 'https://www.baidu.com'
+                                        })
+                                    }}
+                                    onTradeResult={(tradeResult) => {
+                                        alert(JSON.stringify(tradeResult));
+                                    }}
+                                    onStateChange={(state) => {
+                                        alert(JSON.stringify(state));
+                                    }}
+                                />
+                                <ListItem
+                                    title={'goBack'}
+                                    action={() => {
+                                        this.refs['BCWeb'].goBack();
+                                    }}
+                                />
+                                <ListItem
+                                    title={'goForward'}
+                                    action={async () => {
+                                        this.refs['BCWeb'].goForward();
+                                    }}
+                                />
+                                <ListItem
+                                    title={'reload'}
+                                    action={async () => {
+                                        this.refs['BCWeb'].reload();
+                                    }}
+                                />
+                            </React.Fragment>
+                        ) : null}
                     </View>
                 </ScrollView>
             </SafeAreaView>
