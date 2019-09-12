@@ -381,7 +381,7 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
 
         showParams.setClientType("taobao");
         showParams.setBackUrl("alisdk://");
-        showParams.setNativeOpenFailedMode(AlibcFailModeType.AlibcNativeFailModeJumpH5);
+        //showParams.setNativeOpenFailedMode(AlibcFailModeType.AlibcNativeFailModeJumpH5);
 
         return showParams;
     }
