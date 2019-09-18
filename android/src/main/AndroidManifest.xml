@@ -16,7 +16,7 @@
     <uses-permission android:name="android.permission.READ_SETTINGS" />
     <application android:label="@string/app_name">
         <activity
-            android:name="com.ali.auth.third.ui.webview.BaseWebViewActivity"   
+            android:name="com.ali.auth.third.ui.webview.BaseWebViewActivity"
             android:theme="@android:style/Theme.Light.NoTitleBar" />
         <activity
             android:name="com.ali.auth.third.ui.LoginWebViewActivity"
@@ -29,8 +29,7 @@
         <activity
             android:name="com.ali.auth.third.ui.QrLoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar" />
-
-            <activity
+        <activity
             android:name="com.alibaba.alibclinkpartner.smartlink.ALPEntranceActivity"
             android:configChanges="orientation|keyboardHidden|navigation|screenSize" >
             <intent-filter>
@@ -50,8 +49,6 @@
             android:exported="false"
             android:theme="@android:style/Theme.Translucent" >
         </activity>
-
-
         <activity
             android:name="com.alibaba.baichuan.android.trade.ui.AlibcWebViewActivity"
             android:exported="false" >
