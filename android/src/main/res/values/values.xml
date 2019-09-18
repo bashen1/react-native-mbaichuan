@@ -12,6 +12,7 @@
         <!-- All customizations that are NOT specific to a particular API-level can go here. -->
     </style>
 
+
     <color name="aliuser_color_dark_gray">#959595</color>
     <color name="aliuser_color_light_gray">#999999</color>
     <color name="aliuser_default_text_color">#333333</color>
@@ -105,9 +106,10 @@
     <dimen name="activity_vertical_margin">16dp</dimen>
 
 
+    <item name="webviewload_monitor_cancel_point" type="id"/>
+
     <color name="alibc_transparent">#00000000</color>
     <item name="com_taobao_nb_sdk_webview_click" type="id"/>
-    <item name="webviewload_monitor_cancel_point" type="id"/>
     <string name="alisdk_message_10008_action">请稍后重试当前操作，若仍然出错，请反馈至论坛，技术支持或 Android SDK 开发咨询群</string>
     <string name="alisdk_message_10008_message">生成订单地址出错, 错误信息为 {0}</string>
     <string name="alisdk_message_10008_name">GET_ORDER_URL_EXCEPTION</string>

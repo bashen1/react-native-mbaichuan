@@ -93,14 +93,14 @@
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/alibabauth_core-2.0.0.6.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/alibabauth_ext-2.0.0.6.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/alibabauth_ui-2.0.0.6.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/alibc_link_partner-4.1.6.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/AlibcTradeBiz-4.0.0.0.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/AlibcTradeCommon-4.0.0.0.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/alibc_link_partner-4.1.10.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/AlibcTradeBiz-4.0.0.1.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/AlibcTradeCommon-4.0.0.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/app-monitor-sdk-2.6.4.5_for_bc.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/avmpaar3-5.4.36.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/fastjson-1.2.41.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/mtopsdk_allinone_open-3.1.2.5.jar:unspecified@jar" level="project" />
-    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/nb_trade-4.0.0.0.jar:unspecified@jar" level="project" />
+    <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/nb_trade-4.0.0.1.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/securitybodyaar3-5.4.99.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/securityguardaar3-5.4.171.jar:unspecified@jar" level="project" />
     <orderEntry type="library" name="Gradle: __local_aars__:/Users/iori/Documents/Git/react-native-mbaichuan/android/libs/sgmiddletieraar3-5.4.9.jar:unspecified@jar" level="project" />

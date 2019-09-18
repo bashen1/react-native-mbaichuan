@@ -57,6 +57,18 @@ typings/
 # dotenv environment variables file
 .env
 
+# Android Studio
+/*/build/
+/*/local.properties
+/*/out
+/*/*/build
+/*/*/production
+*.swp
+
+
 # next.js build output
 .next
+*.iml
+.idea/
 examples/package-lock.json
+.DS_Store
