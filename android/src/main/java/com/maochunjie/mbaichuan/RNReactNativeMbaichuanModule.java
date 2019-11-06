@@ -147,6 +147,7 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             WritableMap map = Arguments.createMap();
             map.putString("message", "Not logged in");
             map.putString("code", "90000");
+            p.resolve(map);
         }
     }
 
