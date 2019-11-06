@@ -20,6 +20,7 @@
 ```
 require_relative '../node_modules/@react-native-community/cli-platform-ios/native_modules'
 ·······
+source 'https://github.com/CocoaPods/Specs.git'
 source 'http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git'
 
 ·······
