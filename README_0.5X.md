@@ -27,21 +27,24 @@
 1. 打开 `android/app/src/main/java/[...]/MainActivity.java`
   - 在顶部添加 `import com.reactlibrary.RNReactNativeMbaichuanPackage;`
   - 在 `getPackages()` 方法后添加 `new RNReactNativeMbaichuanPackage()`
+  
 2. 打开 `android/settings.gradle` ，添加:
   	```
-  	include ':react-native-mbaichuan'
-  	project(':react-native-mbaichuan').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-mbaichuan/android')
-  	```
+    	include ':react-native-mbaichuan'
+    	project(':react-native-mbaichuan').projectDir = new File(rootProject.projectDir, 	'../node_modules/react-native-mbaichuan/android')
+  ```
+  
 3. 打开 `android/app/build.gradle` ，添加:
   	```
       compile project(':react-native-mbaichuan')
-  	```
-  	以及添加
-  	```
-  	ndk {
+  ```
+  以及添加
+  
+  ```
+   ndk {
         abiFilters "armeabi-v7a", "x86"
-    }
-  	```
+   }
+  ```
 
 
 ### 其他配置
@@ -64,4 +67,3 @@ import * as mBaichuan from 'react-native-mbaichuan';
 
 // TODO: What to do with the module?
 ```
-  
