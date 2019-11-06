@@ -5,7 +5,7 @@ import {
     View,
     Text,
 } from 'react-native';
-import * as mBaichuan from './ModuleIndex';
+import * as mBaichuan from 'react-native-mbaichuan';
 import CommonCss from './CommonCss';
 import ListItem from './ListItem';
 

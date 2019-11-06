@@ -36,21 +36,26 @@ repositories {
 dependencies {
     compile 'com.facebook.react:react-native:+'
 
-    //SDK
-    compile files('libs/alibabauth_core-2.0.0.6.jar')
-    compile files('libs/alibabauth_ext-2.0.0.6.jar')
-    compile files('libs/alibabauth_ui-2.0.0.6.jar')
-    compile files('libs/alibc_link_partner-4.1.10.jar')
-    compile files('libs/AlibcTradeBiz-4.0.0.2.jar')
-    compile files('libs/AlibcTradeCommon-4.0.0.2.jar')
-    compile files('libs/app-monitor-sdk-2.6.4.5_for_bc.jar')
-    compile files('libs/avmpaar3-5.4.36.jar')
-    compile files('libs/fastjson-1.2.41.jar')
-    compile files('libs/mtopsdk_allinone_open-3.1.2.5.jar')
-    compile files('libs/nb_trade-4.0.0.2.jar')
-    compile files('libs/securitybodyaar3-5.4.99.jar')
-    compile files('libs/securityguardaar3-5.4.171.jar')
-    compile files('libs/sgmiddletieraar3-5.4.9.jar')
-    compile files('libs/utdid4all-1.1.5.3_proguard.jar')
+    //登陆
+    implementation 'com.ali.auth.sdk:alibabauth_core:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ui:2.0.0.6@aar'
+    implementation 'com.ali.auth.sdk:alibabauth_ext:2.0.0.6@aar'
+    //安全组件
+    implementation 'com.taobao.android:securityguardaar3:5.4.171@aar'
+    implementation 'com.taobao.android:securitybodyaar3:5.4.99@aar'
+    implementation 'com.taobao.android:avmpaar3:5.4.36@aar'
+    implementation 'com.taobao.android:sgmiddletieraar3:5.4.9@aar'
+    //Mtop（jar包远端依赖）
+    implementation 'com.taobao.android:mtopsdk_allinone_open:3.1.2.5@jar'
+    //applink
+    implementation 'com.alibaba.sdk.android:alibc_link_partner:4.1.10@aar'
+    //ut（jar包远端依赖）
+    implementation 'com.taobao.android:utdid4all:1.1.5.3_proguard'
+    implementation 'com.alibaba.mtl:app-monitor-sdk:2.6.4.5_for_bc'
+    // 电商基础组件
+    implementation 'com.alibaba.sdk.android:AlibcTradeCommon:4.0.0.2@aar'
+    implementation 'com.alibaba.sdk.android:AlibcTradeBiz:4.0.0.2@aar'
+    implementation 'com.alibaba.sdk.android:nb_trade:4.0.0.2@aar'
+
+    implementation 'com.alibaba:fastjson:1.2.41'
 }
-  
