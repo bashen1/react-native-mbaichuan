@@ -34,7 +34,7 @@ repositories {
 }
 
 dependencies {
-    compile 'com.facebook.react:react-native:+'
+    implementation 'com.facebook.react:react-native:+'
 
     //登陆
     implementation 'com.ali.auth.sdk:alibabauth_core:2.0.0.6@aar'
