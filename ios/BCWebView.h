@@ -8,11 +8,12 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 #import <React/RCTComponent.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BCWebView :  UIWebView
+@interface BCWebView :  WKWebView
 
 @property (nonatomic, copy) RCTDirectEventBlock onTradeResult;
 @property (nonatomic, copy) RCTDirectEventBlock onStateChange;

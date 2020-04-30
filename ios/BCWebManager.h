@@ -7,10 +7,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface BCWebManager : RCTViewManager<UIWebViewDelegate>
+@interface BCWebManager : RCTViewManager<WKNavigationDelegate>
 
 @end
 

@@ -1,7 +1,8 @@
 
 #import "RNReactNativeMbaichuan.h"
 #import "BCBridge.h"
-#import <AlibabaAuthSDK/ALBBSDK.h>
+#import <AlibabaAuthEntrance/ALBBSDK.h>
+#import <AlibabaAuthEntrance/ALBBCompatibleSession.h>
 #import <AlibcTradeBiz/AlibcTradeBiz.h>
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
 
@@ -77,4 +78,4 @@ RCT_EXPORT_METHOD(show: (NSDictionary *)param resolve:(RCTPromiseResolveBlock)re
 }
 
 @end
-  
+

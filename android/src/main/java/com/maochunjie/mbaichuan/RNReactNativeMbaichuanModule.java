@@ -101,7 +101,14 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             WritableMap map = Arguments.createMap();
             Session localSession = AlibcLogin.getInstance().getSession();
             map.putString("isLogin", "true");
+            map.putString("userId",localSession.userid);
             map.putString("openId", localSession.openId);
+            map.putString("openSid",localSession.openSid);
+            map.putString("topAccessToken",localSession.topAccessToken);
+            map.putString("topAuthCode",localSession.topAuthCode);
+            map.putString("topExpireTime",localSession.topExpireTime);
+            map.putString("havanaSsoToken",localSession.havanaSsoToken);
+            map.putString("ssoToken",localSession.ssoToken);
             map.putString("avatarUrl", localSession.avatarUrl);
             map.putString("userNick", localSession.nick);
             p.resolve(map);
@@ -110,12 +117,19 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             alibcLogin.showLogin(new AlibcLoginCallback() {
                 @Override
                 public void onSuccess(int i, String s, String s1) {
-                    Session session = AlibcLogin.getInstance().getSession();
+                    Session localSession = AlibcLogin.getInstance().getSession();
                     WritableMap map = Arguments.createMap();
                     map.putString("isLogin", "true");
-                    map.putString("openId", session.openId);
-                    map.putString("avatarUrl", session.avatarUrl);
-                    map.putString("userNick", session.nick);
+                    map.putString("userId",localSession.userid);
+                    map.putString("openId", localSession.openId);
+                    map.putString("openSid",localSession.openSid);
+                    map.putString("topAccessToken",localSession.topAccessToken);
+                    map.putString("topAuthCode",localSession.topAuthCode);
+                    map.putString("topExpireTime",localSession.topExpireTime);
+                    map.putString("havanaSsoToken",localSession.havanaSsoToken);
+                    map.putString("ssoToken",localSession.ssoToken);
+                    map.putString("avatarUrl", localSession.avatarUrl);
+                    map.putString("userNick", localSession.nick);
                     p.resolve(map);
                 }
 
@@ -136,12 +150,19 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
     @ReactMethod
     public void getUserInfo(final Promise p) {
         if (AlibcLogin.getInstance().isLogin()) {
-            Session session = AlibcLogin.getInstance().getSession();
+            Session localSession = AlibcLogin.getInstance().getSession();
             WritableMap map = Arguments.createMap();
             map.putString("isLogin", "true");
-            map.putString("openId", session.openId);
-            map.putString("avatarUrl", session.avatarUrl);
-            map.putString("userNick", session.nick);
+            map.putString("userId",localSession.userid);
+            map.putString("openId", localSession.openId);
+            map.putString("openSid",localSession.openSid);
+            map.putString("topAccessToken",localSession.topAccessToken);
+            map.putString("topAuthCode",localSession.topAuthCode);
+            map.putString("topExpireTime",localSession.topExpireTime);
+            map.putString("havanaSsoToken",localSession.havanaSsoToken);
+            map.putString("ssoToken",localSession.ssoToken);
+            map.putString("avatarUrl", localSession.avatarUrl);
+            map.putString("userNick", localSession.nick);
             p.resolve(map);
         } else {
             WritableMap map = Arguments.createMap();

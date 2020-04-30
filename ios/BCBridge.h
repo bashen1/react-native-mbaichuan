@@ -13,6 +13,7 @@
 #import <React/RCTBridgeModule.h>
 #endif
 #import <UIKit/UIKit.h>
+#import <WebKit/WebKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 - (void)getUserInfo: (RCTPromiseResolveBlock)resolve;
 - (void)logout: (RCTPromiseResolveBlock)resolve;
 - (void)show: (NSDictionary *)param resolve: (RCTPromiseResolveBlock)resolve;
-- (void)showInWebView: (UIWebView *)webView param:(NSDictionary *)param;
+- (void)showInWebView: (WKWebView *)webView param:(NSDictionary *)param;
 @end
 
 NS_ASSUME_NONNULL_END

@@ -8,4 +8,4 @@
 @interface RNReactNativeMbaichuan : NSObject <RCTBridgeModule>
 
 @end
-  
+

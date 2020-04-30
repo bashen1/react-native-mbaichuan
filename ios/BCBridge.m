@@ -8,11 +8,16 @@
 
 #import "BCBridge.h"
 #import "BCWebView.h"
-#import <AlibabaAuthSDK/ALBBSDK.h>
+#import <AlibabaAuthEntrance/ALBBSDK.h>
+#import <AlibabaAuthEntrance/ALBBCompatibleSession.h>
 #import <AlibcTradeSDK/AlibcTradeSDK.h>
 #import <AlibcTradeSDK/AlibcTradeService.h>
 #import <AlibcTradeSDK/AlibcTradePageFactory.h>
+#import <WindVane/WindVane.h>
 #import <React/RCTLog.h>
+
+//百川初始化标志
+NSString *mAliBaiChuan_init_sdk = @"false";
 
 @implementation BCBridge {
     AlibcTradeTaokeParams *taokeParams;
@@ -38,96 +43,109 @@
     }
     
     // 百川平台基础SDK初始化，加载并初始化各个业务能力插件
-    [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
+    if([mAliBaiChuan_init_sdk isEqual: @"false"]){
+        [[AlibcTradeSDK sharedInstance] asyncInitWithSuccess:^{
+            mAliBaiChuan_init_sdk = @"true";
+            NSDictionary *ret = @{@"code": @"0", @"message":@"success"};
+            resolve(ret);
+        } failure:^(NSError *error) {
+            NSDictionary *ret = @{@"code": @(error.code), @"message":error.description};
+            resolve(ret);
+        }];
+    } else {
         NSDictionary *ret = @{@"code": @"0", @"message":@"success"};
         resolve(ret);
-    } failure:^(NSError *error) {
-        NSDictionary *ret = @{@"code": @(error.code), @"message":error.description};
-        resolve(ret);
-    }];
-    
-    // 初始化AlibabaAuthSDK
-    [[ALBBSDK sharedInstance] ALBBSDKInit];
+    }
     
     // 开发阶段打开日志开关，方便排查错误信息
-    //默认调试模式打开日志,release关闭,可以不调用下面的函数
     [[AlibcTradeSDK sharedInstance] setDebugLogOpen:YES];
-    
-    //设置全局的app标识，在电商模块里等同于isv_code
-    [[AlibcTradeSDK sharedInstance] setISVCode:@"app"];
     //不设置的话，加入adzoneid会导致奔溃
     [[AlibcTradeSDK sharedInstance] setIsvVersion:isvVersion];
     [[AlibcTradeSDK sharedInstance] setIsvAppName:isvAppName];
+    //不加这一句，淘宝授权后私域授权无法显示
+    [WVURLProtocolService setSupportWKURLProtocol:YES];
 }
 
 - (void)showLogin: (RCTPromiseResolveBlock)resolve
 {
-     if(![[ALBBSession sharedInstance] isLogin]){
-    [[ALBBSDK sharedInstance] auth:[UIApplication sharedApplication].delegate.window.rootViewController
-                   successCallback:^(ALBBSession *session) {
-                       //授权成功
-                       NSString *isLg;
-                       if([session isLogin]){
-                           isLg=@"true";
-                       }else{
-                           isLg=@"false";
-                       }
-                       NSDictionary *ret = @{
-                                             @"userNick" :[session getUser].nick,
-                                             @"avatarUrl":[session getUser].avatarUrl,
-                                             @"openId":[session getUser].openId,
-                                             @"isLogin":isLg
-                                             };
-                       resolve(ret);
-                   }
-                   failureCallback:^(ALBBSession *session, NSError *error) {
-                       NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
-                       resolve(ret);
-                   }
-     ];
-     }else{
-         //如果登录的输出用户信息
-         ALBBSession *session=[ALBBSession sharedInstance];
-         NSString *isLg;
-         if([session isLogin]){
-             isLg=@"true";
-         }else{
-             isLg=@"false";
-         }
-         NSDictionary *ret = @{
-                               @"userNick" :[session getUser].nick,
-                               @"avatarUrl":[session getUser].avatarUrl,
-                               @"openId":[session getUser].openId,
-                               @"isLogin":isLg};
-         resolve(ret);
-     }
-}
-
-- (void)getUserInfo: (RCTPromiseResolveBlock)resolve
-{
-    if(![[ALBBSession sharedInstance] isLogin]){
-        NSDictionary *ret = @{@"code":@"90000",@"message":@"Not logged in"};
-        resolve(ret);
+    if(![[ALBBCompatibleSession sharedInstance] isLogin]){
+        [[ALBBSDK sharedInstance] auth:[UIApplication sharedApplication].delegate.window.rootViewController successCallback:^{
+            ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
+            NSDictionary *ret = @{
+                @"userNick" :sessionInfo.nick,
+                @"avatarUrl":sessionInfo.avatarUrl,
+                @"ssoToken":@"",
+                @"havanaSsoToken":@"",
+                @"topExpireTime":@"",
+                @"topAuthCode":sessionInfo.topAuthCode,
+                @"topAccessToken":sessionInfo.topAccessToken,
+                @"openSid":sessionInfo.openSid,
+                @"openId":sessionInfo.openId,
+                @"userId":@"",
+                @"isLogin":@"true"
+            };
+            resolve(ret);
+        } failureCallback:^(NSError *error) {
+            NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":error.description};
+            resolve(ret);
+        }];
     }else{
-        ALBBSession *session=[ALBBSession sharedInstance];
+        //如果登录的输出用户信息
         NSString *isLg;
-        if([session isLogin]){
+        if([[ALBBCompatibleSession sharedInstance] isLogin]){
             isLg=@"true";
         }else{
             isLg=@"false";
         }
+        ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
         NSDictionary *ret = @{
-                              @"userNick" :[session getUser].nick,
-                              @"avatarUrl":[session getUser].avatarUrl,
-                              @"openId":[session getUser].openId,
-                              @"isLogin":isLg};
+            @"userNick" :sessionInfo.nick,
+            @"avatarUrl":sessionInfo.avatarUrl,
+            @"ssoToken":@"",
+            @"havanaSsoToken":@"",
+            @"topExpireTime":@"",
+            @"topAuthCode":sessionInfo.topAuthCode,
+            @"topAccessToken":sessionInfo.topAccessToken,
+            @"openSid":sessionInfo.openSid,
+            @"openId":sessionInfo.openId,
+            @"userId":@"",
+            @"isLogin":isLg};
+        resolve(ret);
+    }
+}
+
+- (void)getUserInfo: (RCTPromiseResolveBlock)resolve
+{
+    if(![[ALBBCompatibleSession sharedInstance] isLogin]){
+        NSDictionary *ret = @{@"code":@"90000",@"message":@"Not logged in"};
+        resolve(ret);
+    }else{
+        NSString *isLg;
+        if([[ALBBCompatibleSession sharedInstance] isLogin]){
+            isLg=@"true";
+        }else{
+            isLg=@"false";
+        }
+        ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
+        NSDictionary *ret = @{
+            @"userNick" :sessionInfo.nick,
+            @"avatarUrl":sessionInfo.avatarUrl,
+            @"ssoToken":@"",
+            @"havanaSsoToken":@"",
+            @"topExpireTime":@"",
+            @"topAuthCode":sessionInfo.topAuthCode,
+            @"topAccessToken":sessionInfo.topAccessToken,
+            @"openSid":sessionInfo.openSid,
+            @"openId":sessionInfo.openId,
+            @"userId":@"",
+            @"isLogin":isLg};
         resolve(ret);
     }
 }
 
 - (void)logout: (RCTPromiseResolveBlock)resolve
 {
-    if([[ALBBSession sharedInstance] isLogin]){
+    if([[ALBBCompatibleSession sharedInstance] isLogin]){
         [[ALBBSDK sharedInstance] logout];
         NSDictionary *ret = @{@"code":@"0",@"message":@"success"};
         resolve(ret);
@@ -187,7 +205,7 @@
         resolve(ret);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
         //失败回调
-        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":error.description};
         resolve(ret);
     }];
 }
@@ -212,7 +230,7 @@
         resolve(ret);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
         //失败回调
-        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":error.description};
         resolve(ret);
     }];
 }
@@ -247,7 +265,7 @@
     }
 }
 
-- (void)_showInWebView: (UIWebView *)webView page:(id<AlibcTradePage>)page param:(NSDictionary *)param bizCode: (NSString *)bizCode
+- (void)_showInWebView: (WKWebView *)webView page:(id<AlibcTradePage>)page param:(NSDictionary *)param bizCode: (NSString *)bizCode
 {
     //处理参数
     NSDictionary* result = [self dealParam:param];
@@ -267,12 +285,12 @@
         ((BCWebView *)webView).onTradeResult(ret);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
         //失败回调
-        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":error.description};
         ((BCWebView *)webView).onTradeResult(ret);
     }];
 }
 
-- (void)_showUrlInWebView: (UIWebView *)webView url:(NSString *)url param:(NSDictionary *)param
+- (void)_showUrlInWebView: (WKWebView *)webView url:(NSString *)url param:(NSDictionary *)param
 {
     //处理参数
     NSDictionary* result = [self dealParam:param];
@@ -292,7 +310,7 @@
         ((BCWebView *)webView).onTradeResult(ret);
     } tradeProcessFailedCallback:^(NSError * _Nullable error) {
         //失败回调
-        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":[[error userInfo] objectForKey:NSLocalizedDescriptionKey]};
+        NSDictionary *ret = @{@"code":[NSString stringWithFormat:@"%ld", (long)[error code]],@"message":error.description};
         ((BCWebView *)webView).onTradeResult(ret);
     }];
 }

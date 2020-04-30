@@ -158,7 +158,7 @@ class App extends Component {
                                         flex: 1,
                                         height: 300
                                     }}
-                                    ref="BCWeb"
+                                    ref={ref => this.BCWeb = ref}
                                     param={{
                                         type: 'url',
                                         payload: Object.assign({}, param, {
@@ -175,19 +175,19 @@ class App extends Component {
                                 <ListItem
                                     title={'goBack'}
                                     action={() => {
-                                        this.refs['BCWeb'].goBack();
+                                        this.BCWeb && this.BCWeb.goBack();
                                     }}
                                 />
                                 <ListItem
                                     title={'goForward'}
                                     action={async () => {
-                                        this.refs['BCWeb'].goForward();
+                                        this.BCWeb && this.BCWeb.goForward();
                                     }}
                                 />
                                 <ListItem
                                     title={'reload'}
                                     action={async () => {
-                                        this.refs['BCWeb'].reload();
+                                        this.BCWeb && this.BCWeb.reload();
                                     }}
                                 />
                             </React.Fragment>

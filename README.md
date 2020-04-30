@@ -47,7 +47,7 @@ allprojects {
 
 #### iOS
 
-1. 把 `yw_1222.jpg` 拖入到项目中
+1. 把 `yw_1222.jpg` 重命名为 `yw_1222_baichuan.jpg` 拖入到项目中
 2. `URL Schemes` 添加 `tbopen + 百川APPID` 
 3. `LSApplicationQueriesSchemes` 添加 `tmall`、`tbopen`
 

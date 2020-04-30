@@ -42,7 +42,7 @@ export class BCWebView extends PureComponent {
     goForward = () => {
         UIManager.dispatchViewManagerCommand(
             this._getWebViewBridgeHandle(),
-            UIManager.BCWebManager.Commands.goForward,
+            UIManager.BCWeb.Commands.goForward,
             null
         );
     };
@@ -50,7 +50,7 @@ export class BCWebView extends PureComponent {
     goBack = () => {
         UIManager.dispatchViewManagerCommand(
             this._getWebViewBridgeHandle(),
-            UIManager.BCWebManager.Commands.goBack,
+            UIManager.BCWeb.Commands.goBack,
             null
         );
     };
@@ -58,7 +58,7 @@ export class BCWebView extends PureComponent {
     reload = () => {
         UIManager.dispatchViewManagerCommand(
             this._getWebViewBridgeHandle(),
-            UIManager.BCWebManager.Commands.reload,
+            UIManager.BCWeb.Commands.reload,
             null
         );
     };

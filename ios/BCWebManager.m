@@ -20,9 +20,10 @@ RCT_EXPORT_MODULE()
 {
     BCWebView *webView = [[BCWebView alloc] initWithFrame:CGRectZero];
     //webView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    webView.scalesPageToFit = YES;
+    //暂时去除
+    //webView.scalesPageToFit = YES;
     webView.scrollView.scrollEnabled = YES;
-    webView.delegate = self;
+    webView.navigationDelegate = self;
     return webView;
 }
 
@@ -66,38 +67,36 @@ RCT_EXPORT_METHOD(reload:(nonnull NSNumber *)reactTag)
         }
     }];
 }
-- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType
-{
-    RCTLog(@"Loading URL :%@",request.URL.absoluteString);
-    NSString* url = request.URL.absoluteString;
+
+#pragma mark - WKNavigationDelegate
+- (void)webView:(WKWebView *)webView decidePolicyForNavigationAction:(WKNavigationAction *)navigationAction decisionHandler:(void (^)(WKNavigationActionPolicy))decisionHandler{
+    RCTLog(@"Loading URL :%@",[navigationAction.request.URL absoluteString]);
+    NSString* url = navigationAction.request.URL.absoluteString;
     if ([url hasPrefix:@"http://"]  ||
         [url hasPrefix:@"https://"] ||
         [url hasPrefix:@"file://"]) {
-        return YES;
+        decisionHandler(WKNavigationActionPolicyAllow);
     } else {
-        return FALSE; //to stop loading
+        decisionHandler(WKNavigationActionPolicyCancel); //to stop loading
     }
 }
 
-- (void)webViewDidStartLoad:(BCWebView *)webView
-{
+- (void)webView:(BCWebView *)webView didCommitNavigation:(WKNavigation *)navigation{
     webView.onStateChange(@{
-                            @"loading": @(true),
-                            @"canGoBack": @([webView canGoBack]),
-                            });
+        @"loading": @(true),
+        @"canGoBack": @([webView canGoBack]),
+                          });
 }
 
-- (void)webViewDidFinishLoad:(BCWebView *)webView
-{
+- (void)webView:(BCWebView *)webView didFinishNavigation:(WKNavigation *)navigation{
     webView.onStateChange(@{
-                            @"loading": @(false),
-                            @"canGoBack": @([webView canGoBack]),
-                            @"title": [webView stringByEvaluatingJavaScriptFromString:@"document.title"],
-                            });
+        @"loading": @(false),
+        @"canGoBack": @([webView canGoBack]),
+        @"title": webView.title,
+                          });
 }
 
-- (void)webView:(BCWebView *)webView didFailLoadWithError:(NSError *)error
-{
+- (void)webView:(BCWebView *)webView didFailNavigation:(WKNavigation *)navigation withError:(NSError *)error{
     /*webView.onStateChange(@{
      @"loading": @(false),
      @"error": @(true),
@@ -105,4 +104,5 @@ RCT_EXPORT_METHOD(reload:(nonnull NSNumber *)reactTag)
      });
      RCTLog(@"Failed to load with error :%@",[error debugDescription]);*/
 }
+
 @end
