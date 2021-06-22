@@ -3,13 +3,6 @@
 
 [![npm version](https://badge.fury.io/js/react-native-mbaichuan.svg)](https://badge.fury.io/js/react-native-mbaichuan)
 
-## 注意点
-
-|         版本        |   版本  |   文档  |
-| :-----------------: | :---: | :---: |
-| react-native < 0.60 | 3.0.2 | [点击](./README_0.5X.md) |
-
-
 ## 开始
 
 `$ npm install react-native-mbaichuan --save`
