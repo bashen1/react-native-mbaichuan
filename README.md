@@ -20,21 +20,6 @@ source 'http://repo.baichuan-ios.taobao.com/baichuanSDK/AliBCSpecs.git'
 target
 ```
 
-### Android
-打开`android/bulid.gradle`，添加以下仓库
-```
-······
-allprojects {
-    repositories {
-        ·····
-        maven {
-            url "http://repo.baichuan-android.taobao.com/content/groups/BaichuanRepositories/"
-        }
-    }
-}
-······
-```
-
 ### 其他配置
 
 
