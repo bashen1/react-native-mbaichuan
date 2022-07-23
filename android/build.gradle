@@ -35,27 +35,6 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-
-    //登陆
-    implementation files('libs/alibabauth_core-2.0.0.6.aar')
-    implementation files('libs/alibabauth_ui-2.0.0.6.aar')
-    implementation files('libs/alibabauth_ext-2.0.0.6.aar')
-    //安全组件
-    implementation files('libs/securityguardaar3-5.4.171.aar')
-    implementation files('libs/securitybodyaar3-5.4.99.aar')
-    implementation files('libs/avmpaar3-5.4.36.aar')
-    implementation files('libs/sgmiddletieraar3-5.4.9.aar')
-    //Mtop（jar包远端依赖）
-    implementation files('libs/mtopsdk_allinone_open-3.1.2.5.jar')
-    //applink
-    implementation files('libs/alibc_link_partner-4.1.15.aar')
-    //ut（jar包远端依赖）
-    implementation files('libs/utdid4all-1.5.2.jar')
-    implementation files('libs/app-monitor-sdk-2.6.4.5_for_bc.jar')
-    // 电商基础组件
-    implementation files('libs/AlibcTradeCommon-4.0.0.8.aar')
-    implementation files('libs/AlibcTradeBiz-4.0.0.8.aar')
-    implementation files('libs/nb_trade-4.0.0.8.aar')
-
+    implementation fileTree(include: ['*.aar', '*.jar'], dir: 'libs')
     implementation 'com.alibaba:fastjson:1.2.41'
 }

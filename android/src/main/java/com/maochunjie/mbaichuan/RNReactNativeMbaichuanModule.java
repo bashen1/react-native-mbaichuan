@@ -12,13 +12,12 @@ import com.ali.auth.third.core.model.Session;
 import com.ali.auth.third.ui.context.CallbackContext;
 import com.alibaba.baichuan.android.trade.AlibcTrade;
 import com.alibaba.baichuan.android.trade.AlibcTradeSDK;
-import com.alibaba.baichuan.android.trade.callback.AlibcTradeCallback;
 import com.alibaba.baichuan.android.trade.callback.AlibcTradeInitCallback;
 import com.alibaba.baichuan.android.trade.model.AlibcShowParams;
 import com.alibaba.baichuan.android.trade.model.OpenType;
 import com.alibaba.baichuan.android.trade.page.*;
 import com.alibaba.baichuan.trade.biz.AlibcConstants;
-import com.alibaba.baichuan.trade.biz.applink.adapter.AlibcFailModeType;
+import com.alibaba.baichuan.trade.biz.AlibcTradeCallback;
 import com.alibaba.baichuan.trade.biz.context.AlibcTradeResult;
 import com.alibaba.baichuan.trade.biz.core.taoke.AlibcTaokeParams;
 import com.alibaba.baichuan.trade.biz.login.AlibcLogin;
@@ -223,9 +222,6 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             case "shop":
                 this._show(new AlibcShopPage(payload.getString("shopid")), "shop", param, p);
                 break;
-            case "orders":
-                this._show(new AlibcMyOrdersPage(payload.getInt("orderStatus"), payload.getBoolean("allOrder")), "orders", param, p);
-                break;
             case "addCard":
                 this._show(new AlibcAddCartPage(param.getString("itemid")), "addCart", param, p);
                 break;
@@ -252,9 +248,6 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
                 break;
             case "shop":
                 this._showInWebView(webview, webViewClient, new AlibcShopPage(payload.getString("shopid")), "shop", param);
-                break;
-            case "orders":
-                this._showInWebView(webview, webViewClient, new AlibcMyOrdersPage(payload.getInt("orderStatus"), payload.getBoolean("allOrder")), "orders", param);
                 break;
             case "addCard":
                 this._showInWebView(webview, webViewClient, new AlibcAddCartPage(payload.getString("itemid")), "addCart", param);

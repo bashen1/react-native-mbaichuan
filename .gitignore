@@ -72,3 +72,5 @@ typings/
 .idea/
 examples/package-lock.json
 .DS_Store
+.history/
+.gradle/
