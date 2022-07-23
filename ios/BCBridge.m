@@ -170,9 +170,6 @@ NSString *mAliBaiChuan_init_sdk = @"false";
     } else if ([type isEqualToString:@"shop"]) {
         page = [AlibcTradePageFactory shopPage:(NSString *)payload[@"shopid"]];
         [self _show:page param:param bizCode:@"shop" resolve:resolve];
-    } else if ([type isEqualToString:@"orders"]) {
-        page = [AlibcTradePageFactory myOrdersPage:[payload[@"orderStatus"] integerValue] isAllOrder:[payload[@"allOrder"] boolValue]];
-        [self _show:page param:param bizCode:@"orders" resolve:resolve];
     } else if ([type isEqualToString:@"addCard"]) {
         page = [AlibcTradePageFactory addCartPage:(NSString *)payload[@"itemid"]];
         [self _show:page param:param bizCode:@"addCart" resolve:resolve];
@@ -250,9 +247,6 @@ NSString *mAliBaiChuan_init_sdk = @"false";
     } else if ([type isEqualToString:@"shop"]) {
         page = [AlibcTradePageFactory shopPage:(NSString *)payload[@"shopid"]];
         [self _showInWebView:webView page:page param:param bizCode:@"shop"];
-    } else if ([type isEqualToString:@"orders"]) {
-        page = [AlibcTradePageFactory myOrdersPage:[payload[@"orderStatus"] integerValue] isAllOrder:[payload[@"allOrder"] boolValue]];
-        [self _showInWebView:webView page:page param:param bizCode:@"orders"];
     } else if ([type isEqualToString:@"addCard"]) {
         page = [AlibcTradePageFactory addCartPage:(NSString *)payload[@"itemid"]];
         [self _showInWebView:webView page:page param:param bizCode:@"addCart"];
