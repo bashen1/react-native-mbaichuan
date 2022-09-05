@@ -223,7 +223,7 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
                 this._show(new AlibcShopPage(payload.getString("shopid")), "shop", param, p);
                 break;
             case "addCard":
-                this._show(new AlibcAddCartPage(param.getString("itemid")), "addCart", param, p);
+                this._show(new AlibcAddCartPage(payload.getString("itemid")), "addCart", param, p);
                 break;
             case "mycard":
                 this._show(new AlibcMyCartsPage(), "cart", param, p);
