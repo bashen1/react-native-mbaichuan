@@ -3,8 +3,8 @@
 
 [![npm version](https://badge.fury.io/js/react-native-mbaichuan.svg)](https://badge.fury.io/js/react-native-mbaichuan)
 
-iOS Version: 4.0.1.17
-Android Version: 4.0.0.27
+iOS Version: 4.1.0.0
+Android Version: 4.1.0.1
 
 ## 开始
 
@@ -25,7 +25,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 ·······
 target 'App' do
   # tag为https://github.com/bashen1/AlibcTradeSDK-Specs.git仓库实际tag
-  pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.1.0'
+  pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.2.0'
 
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
 ·······
@@ -50,6 +50,13 @@ target
 
 详见examples目录
 
+### 注意
+
+新的商品ID需要传入adZoneId，否则Android跳转手淘提示「服务竟然出错了」，iOS也只能跳转至手淘首页
+
 ## 其他
+
+模块升级时请注意上方iOS的集成方式，如果SDK升级了，需要改tag
+`pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.2.0'`
 
 开源不易，且用且珍惜
