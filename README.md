@@ -4,7 +4,8 @@
 [![npm version](https://badge.fury.io/js/react-native-mbaichuan.svg)](https://badge.fury.io/js/react-native-mbaichuan)
 
 iOS Version: 4.1.0.0
-Android Version: 4.1.0.1
+
+Android Version: 4.1.0.3
 
 ## 开始
 
