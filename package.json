@@ -1,7 +1,7 @@
 
 {
   "name": "react-native-mbaichuan",
-  "version": "4.5.1",
+  "version": "4.6.0",
   "description": "react-native library for Ali Baichuan",
   "main": "index.js",
   "scripts": {
