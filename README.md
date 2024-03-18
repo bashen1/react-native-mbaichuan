@@ -3,9 +3,9 @@
 
 [![npm version](https://badge.fury.io/js/react-native-mbaichuan.svg)](https://badge.fury.io/js/react-native-mbaichuan)
 
-iOS Version: 4.1.0.0
+iOS Version: 4.1.0.3
 
-Android Version: 4.1.0.3.1
+Android Version: 4.1.0.5
 
 ## 开始
 
@@ -26,7 +26,7 @@ require_relative '../node_modules/@react-native-community/cli-platform-ios/nativ
 ·······
 target 'App' do
   # tag为https://github.com/bashen1/AlibcTradeSDK-Specs.git仓库实际tag
-  pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.2.0'
+  pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.3.0'
 
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
 ·······
@@ -58,6 +58,6 @@ target
 ## 其他
 
 模块升级时请注意上方iOS的集成方式，如果SDK升级了，需要改tag
-`pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.2.0'`
+`pod 'AlibcTradeSDK-Specs', :git=> 'https://github.com/bashen1/AlibcTradeSDK-Specs.git', :tag=> '1.3.0'`
 
 开源不易，且用且珍惜
