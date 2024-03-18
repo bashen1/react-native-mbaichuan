@@ -35,6 +35,21 @@ repositories {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation fileTree(include: ['*.aar', '*.jar'], dir: 'libs')
     implementation 'com.alibaba:fastjson:1.2.41'
+
+    implementation(name:'alibabauth_core-2.0.0.12', ext:'aar')
+    implementation(name:'alibabauth_ext-2.0.0.12', ext:'aar')
+    implementation(name:'alibabauth_ui-2.0.0.12', ext:'aar')
+    implementation(name:'alibc_link_partner-4.1.30', ext:'aar')
+    implementation(name:'AlibcTradeBiz-4.1.0.5', ext:'aar')
+    implementation(name:'AlibcTradeCommon-4.1.0.5', ext:'aar')
+    implementation(name:'app-monitor-sdk-2.6.4.13_for_bc', ext:'aar')
+    implementation(name:'MiddleTierSDK-external-release-5.6.231002-preInstall', ext:'aar')
+    implementation(name:'miscaar3-5.5.9.1-preInstall', ext:'aar')
+    implementation(name:'mtopsdk_allinone_open-3.1.22-opt', ext:'jar')
+    implementation(name:'nb_trade-4.1.0.5', ext:'aar')
+    implementation(name:'nocaptchaaar3-5.5.8.1-preInstall', ext:'aar')
+    implementation(name:'SecurityBodySDK-external-release-5.6.231002-preInstall', ext:'aar')
+    implementation(name:'SecurityGuardSDK-external-release-5.6.231002-preInstall', ext:'aar')
+    implementation(name:'utdid4all-1.5.3_proguard', ext:'jar')
 }
