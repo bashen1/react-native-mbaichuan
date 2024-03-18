@@ -72,16 +72,11 @@ NSString *mAliBaiChuan_init_sdk = @"false";
         [[ALBBSDK sharedInstance] auth:[UIApplication sharedApplication].delegate.window.rootViewController successCallback:^{
             ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
             NSDictionary *ret = @{
-                @"userNick" :sessionInfo.nick,
-                @"avatarUrl":sessionInfo.avatarUrl,
-                @"ssoToken":@"",
-                @"havanaSsoToken":@"",
-                @"topExpireTime":@"",
-                @"topAuthCode":sessionInfo.topAuthCode,
-                @"topAccessToken":sessionInfo.topAccessToken,
-                @"openSid":sessionInfo.openSid,
-                @"openId":sessionInfo.openId,
-                @"userId":@"",
+                @"userNick" :sessionInfo.nick?:[NSNull null],
+                @"avatarUrl":sessionInfo.avatarUrl?:[NSNull null],
+                @"openSid":sessionInfo.openSid?:[NSNull null],
+                @"openId":sessionInfo.openId?:[NSNull null],
+                @"userId":[NSNull null],
                 @"isLogin":@"true"
             };
             resolve(ret);
@@ -99,16 +94,11 @@ NSString *mAliBaiChuan_init_sdk = @"false";
         }
         ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
         NSDictionary *ret = @{
-            @"userNick" :sessionInfo.nick,
-            @"avatarUrl":sessionInfo.avatarUrl,
-            @"ssoToken":@"",
-            @"havanaSsoToken":@"",
-            @"topExpireTime":@"",
-            @"topAuthCode":sessionInfo.topAuthCode,
-            @"topAccessToken":sessionInfo.topAccessToken,
-            @"openSid":sessionInfo.openSid,
-            @"openId":sessionInfo.openId,
-            @"userId":@"",
+            @"userNick" :sessionInfo.nick?:[NSNull null],
+            @"avatarUrl":sessionInfo.avatarUrl?:[NSNull null],
+            @"openSid":sessionInfo.openSid?:[NSNull null],
+            @"openId":sessionInfo.openId?:[NSNull null],
+            @"userId":[NSNull null],
             @"isLogin":isLg};
         resolve(ret);
     }
@@ -128,16 +118,11 @@ NSString *mAliBaiChuan_init_sdk = @"false";
         }
         ALBBUser *sessionInfo = [[ALBBCompatibleSession sharedInstance] getUser];
         NSDictionary *ret = @{
-            @"userNick" :sessionInfo.nick,
-            @"avatarUrl":sessionInfo.avatarUrl,
-            @"ssoToken":@"",
-            @"havanaSsoToken":@"",
-            @"topExpireTime":@"",
-            @"topAuthCode":sessionInfo.topAuthCode,
-            @"topAccessToken":sessionInfo.topAccessToken,
-            @"openSid":sessionInfo.openSid,
-            @"openId":sessionInfo.openId,
-            @"userId":@"",
+            @"userNick" :sessionInfo.nick?:[NSNull null],
+            @"avatarUrl":sessionInfo.avatarUrl?:[NSNull null],
+            @"openSid":sessionInfo.openSid?:[NSNull null],
+            @"openId":sessionInfo.openId?:[NSNull null],
+            @"userId":[NSNull null],
             @"isLogin":isLg};
         resolve(ret);
     }
