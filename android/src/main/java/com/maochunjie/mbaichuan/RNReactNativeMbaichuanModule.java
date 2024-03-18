@@ -103,11 +103,6 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             map.putString("userId",localSession.userid);
             map.putString("openId", localSession.openId);
             map.putString("openSid",localSession.openSid);
-            map.putString("topAccessToken",localSession.topAccessToken);
-            map.putString("topAuthCode",localSession.topAuthCode);
-            map.putString("topExpireTime",localSession.topExpireTime);
-            map.putString("havanaSsoToken",localSession.havanaSsoToken);
-            map.putString("ssoToken",localSession.ssoToken);
             map.putString("avatarUrl", localSession.avatarUrl);
             map.putString("userNick", localSession.nick);
             p.resolve(map);
@@ -122,11 +117,6 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
                     map.putString("userId",localSession.userid);
                     map.putString("openId", localSession.openId);
                     map.putString("openSid",localSession.openSid);
-                    map.putString("topAccessToken",localSession.topAccessToken);
-                    map.putString("topAuthCode",localSession.topAuthCode);
-                    map.putString("topExpireTime",localSession.topExpireTime);
-                    map.putString("havanaSsoToken",localSession.havanaSsoToken);
-                    map.putString("ssoToken",localSession.ssoToken);
                     map.putString("avatarUrl", localSession.avatarUrl);
                     map.putString("userNick", localSession.nick);
                     p.resolve(map);
@@ -155,11 +145,6 @@ public class RNReactNativeMbaichuanModule extends ReactContextBaseJavaModule {
             map.putString("userId",localSession.userid);
             map.putString("openId", localSession.openId);
             map.putString("openSid",localSession.openSid);
-            map.putString("topAccessToken",localSession.topAccessToken);
-            map.putString("topAuthCode",localSession.topAuthCode);
-            map.putString("topExpireTime",localSession.topExpireTime);
-            map.putString("havanaSsoToken",localSession.havanaSsoToken);
-            map.putString("ssoToken",localSession.ssoToken);
             map.putString("avatarUrl", localSession.avatarUrl);
             map.putString("userNick", localSession.nick);
             p.resolve(map);
