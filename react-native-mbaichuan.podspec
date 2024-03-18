@@ -17,7 +17,7 @@ Pod::Spec.new do |s|
   s.frameworks = "CoreTelephony", "CoreMotion"
   s.libraries = "sqlite3", "c++", "z"
 
-  s.dependency "React"
+  s.dependency "React-Core"
 
   s.dependency 'AlibcTradeSDK-Specs'
 
